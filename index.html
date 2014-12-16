@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<title>BMI Calculator</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="cordova.js"></script>
+<link rel="stylesheet" href="css/themes/ak.css" />
+<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+<script type="text/javascript">
+
+function calculateBmi() {
+var weight = document.bmiForm.weight.value
+var height = document.bmiForm.height.value
+if(weight > 0 && height > 0){	
+var finalBmi = (weight*703)/(height*height)
+document.bmiForm.bmi.value = finalBmi
+if(finalBmi < 18.5){
+document.bmiForm.meaning.value = "You have a lower than healthy BMI."
+}
+if(finalBmi > 18.5 && finalBmi < 25){
+document.bmiForm.meaning.value = "You're healthy!"
+}
+if(finalBmi > 25){
+document.bmiForm.meaning.value = "You're Overweight"
+}
+}
+else{
+alert("Please Fill in everything correctly")
+}
+}
+</script>
+
+<style type="text/css">
+<!--
+button {
+	padding-top: 50px;
+	margin: 50px;
+}
+
+body{
+background-color: #FFFFFF;
+width:850px;
+height: 100%;
+margin-left:auto;
+margin-right:auto;
+padding: 15px; 
+font-size: 15px;
+text-align: center;
+filter:alpha(opacity=50);
+-moz-opacity:.50;
+opacity:.75;
+}
+
+
+-->
+</style>
+
+</head>
+
+<body>
+
+<div data-role="page" data-theme="a">
+  <div data-role="header" data-fullscreen="true">
+    <h1>Body Mass Index Calculator</h1>
+  </div>
+<div data-role=content>
+
+	<ul data-role="listview" data-inset="true" data-divider-theme="a">
+      <li data-role="list-divider"></li>
+	  <li><a href="#B">About BMI</a></li>
+      <li><a href="#C">Alternative Calculations</a></li>
+    </ul>
+  
+<form name="bmiForm">
+Your Weight(lbs): <input type="text" name="weight" size="5"><br />
+Your Height(ins): <input type="text" name="height" size="5"><br />
+<input type="button" value="Calculate BMI" onClick="calculateBmi()"><br />
+Your BMI: <input type="text" name="bmi" size="5"><br />
+This Means: <input type="text" name="meaning" size="5"><br />
+<input type="reset" value="Reset" />
+</form>
+
+<div data-role="footer" data-position="fixed" data-fullscreen="true">
+    <h4>BMI Calculator</h4>
+</div>
+
+
+</div>
+</div>
+
+
+<div data-role="page" id="B" data-add-back-btn="true" data-theme="b">
+
+   <div data-role="header">
+      <h1>About BMI</h1>
+</div>
+  <div data-role="content">
+<p> Welcome to the BMI Calculator.  The Body Mass Index is a measure of relative weight based on the mass and height of an individual.  A Healthy BMI ranges from 18.5 - 24.9</p>
+<p> Although your range may possibly fall outside of the healthy range, The measurement does not take in to consideration age or muscle mass. Extremely fit athletes are known to be considered overweight</P>
+  <div data-role="footer" data-theme="b" data-position="fixed">
+    <h4><a href="BMI.html">Home</a></h4>
+  </div>
+  </div>
+</div>
+
+<div data-role="page" id="C" data-add-back-btn="true" data-theme="c">
+
+   <div data-role="header">
+      <h1>Alternative Calculations</h1>
+</div>
+ <div data-role="content">
+    <img src="images/metric.png" style="width:600px;height:200px">
+	<br>
+	<br>
+	<img src="images/US.png" style="width:600px;height:200px">
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4><a href="BMI.html">Home</a></h4>
+  </div>
+  </div>
+</div>
+		
+</div>
+
+</body>
+</html>
